@@ -1,0 +1,17 @@
+{
+  "name": "pdoc",
+  "version": "0.1.0",
+  "description": "Simple project folder to HTML structure",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paul Austin",
+  "license": "MIT",
+  "bin": {
+    "pdoc": "bin/cmd.js"
+  },
+  "dependencies": {
+    "walk": "^2.3.9"
+  }
+}
