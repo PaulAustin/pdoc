@@ -31,22 +31,23 @@ var options = {
   //* Don't follwing links, simple folders only.
   followLinks: false,
   //* Ignore pdoc config files
-  filters: ['.psoc.json', '.pdoc.ignore', '.git']
+  filters: ['.psoc.json', '.pdoc.ignore', '.git', 'node_modules', 'html_app']
+  // TODO this should incorporate the users ignore file.
 };
 
 var walker = walk.walk('.', options);
 
 walker.on('file', function (root, fileStat, next) {
   var fullFilePath = root + '/' + fileStat.name;
-  console.log('file -', fullFilePath);
+//  console.log('file -', fullFilePath);
   fs.readFile(fullFilePath, {encoding:'utf8'}, function (err, data) {
-    pdoc.scanFile(data);
+    pdoc.scanFile(fullFilePath, data);
     next();
   });
 });
 
 walker.on('directory', function (root, dirStat, next) {
-  console.log('dir  - ', dirStat.name);
+//  console.log('dir  - ', dirStat.name);
   next();
 });
 
